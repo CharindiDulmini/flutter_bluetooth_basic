@@ -37,7 +37,7 @@ class BluetoothManager {
   //     await _channel.invokeMethod('isOn').then<bool>((d) => d);
 
   Future<bool> get isConnected async =>
-      await _channel.invokeMethod('isConnected');
+      await _channel.invokeMethod('is_connected');
 
   BehaviorSubject<bool> _isScanning = BehaviorSubject.seeded(false);
   Stream<bool> get isScanning => _isScanning.stream;
@@ -77,7 +77,7 @@ class BluetoothManager {
     _scanResults.add(<BluetoothDevice>[]);
 
     try {
-      await _channel.invokeMethod('startScan');
+      await _channel.invokeMethod('action_start_scan');
     } catch (e) {
       print('Error starting scan.');
       _stopScanPill.add(null);
@@ -119,7 +119,7 @@ class BluetoothManager {
 
   /// Stops a scan for Bluetooth Low Energy devices
   Future stopScan() async {
-    await _channel.invokeMethod('stopScan');
+    await _channel.invokeMethod('action_stop_scan');
     _stopScanPill.add(null);
     _isScanning.add(false);
   }
