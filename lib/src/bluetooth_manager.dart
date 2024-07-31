@@ -77,7 +77,7 @@ class BluetoothManager {
     _scanResults.add(<BluetoothDevice>[]);
 
     try {
-      await _channel.invokeMethod('action_start_scan');
+      await _channel.invokeMethod('start_scan');
     } catch (e) {
       print('Error starting scan.');
       _stopScanPill.add(null);
@@ -119,7 +119,7 @@ class BluetoothManager {
 
   /// Stops a scan for Bluetooth Low Energy devices
   Future stopScan() async {
-    await _channel.invokeMethod('stopScan');
+    await _channel.invokeMethod('stop_scan');
     _stopScanPill.add(null);
     _isScanning.add(false);
   }
