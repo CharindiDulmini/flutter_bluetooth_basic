@@ -12,7 +12,7 @@ class BluetoothManager {
   static const int DISCONNECTED = 0;
 
   static const MethodChannel _channel =
-      const MethodChannel('$NAMESPACE/methods');
+      const MethodChannel('$NAMESPACE');
   static const EventChannel _stateChannel =
       const EventChannel('$NAMESPACE/state');
   Stream<MethodCall> get _methodStream => _methodStreamController.stream;
